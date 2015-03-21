@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Simple_TS</string>
+    <string name="app_name">一译</string>
     <string name="action_settings">Settings</string>
     <string name="translate">翻译</string>
+    <string name="cancel">取消</string>
     <string name="text_hint">请输入需要翻译的内容</string>
     <string name="ph_en">[英]</string>
     <string name="ph_am">[美]</string>
