@@ -2,106 +2,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_2"
     android:orientation="vertical"
     tools:context="com.cookiemouse.simple_ts.MainActivity" >
-    
+
     <LinearLayout
+        android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_2"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp" >
 
-        <LinearLayout
-            android:id="@+id/head"
+        <ImageView
+            android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:layout_height="100dp"
+            android:background="@drawable/title" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/button" />
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:maxHeight="100dp"
+            android:background="@drawable/edit"
+            android:gravity="start"
+            android:hint="@string/text_hint"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
-            <EditText
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:background="#FFFFFF"
-                android:gravity="start"
-                android:hint="@string/text_hint" />
-
-            <RelativeLayout
-                android:id="@+id/two_button_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone" >
-
-                <Button
-                    android:id="@+id/cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/cancel" />
-
-                <Button
-                    android:id="@+id/translate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/translate" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/two_button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp" >
+            android:visibility="gone" >
 
-            <TextView
-                android:id="@+id/tv_word"
+            <Button
+                android:id="@+id/cancel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/btn_press"
+                android:text="@string/cancel" />
 
-            <TextView
-                android:id="@+id/tv_ph_en"
+            <Button
+                android:id="@+id/translate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_ph_am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tx_word_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="15dp" />
-
-        <TextView
-            android:id="@+id/tx_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp" />
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/translate"
+                android:background="@drawable/btn_press"
+                />
+        </RelativeLayout>
     </LinearLayout>
-    
-        <TextView
-            android:id="@+id/sentence_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="#00ffff"
-            android:padding="10dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:padding="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_background"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/tv_ph_en"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/tv_ph_am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tx_word_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:textColor="#ffffff" />
+
+                
+            <TextView
+                android:id="@+id/tx_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="#ffffff" />
+                </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/hello_world_up"/>
+
+    <TextView
+        android:id="@+id/sentence_show"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:textColor="#888888"
+        android:layout_gravity="bottom|center_horizontal"
+        android:textSize="7pt"/>
+    
 </FrameLayout>

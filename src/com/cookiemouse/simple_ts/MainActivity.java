@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 public class MainActivity extends Activity {
 
 	private static TextView tv_content, tv_ph_en, tv_ph_am, tv_word, tv_word_show, tv_sentence;
@@ -58,8 +57,8 @@ public class MainActivity extends Activity {
 		Initial();
 		
 		//animation
-		final TranslateAnimation ta = new TranslateAnimation(-50, 50, 0, 0);
-		ta.setDuration(2000);
+		final TranslateAnimation ta = new TranslateAnimation(-20, 20, 0, 0);
+		ta.setDuration(3000);
 		ta.setRepeatCount(1000);
 		ta.setRepeatMode(2);
 		tv_sentence.setAnimation(ta);
@@ -92,9 +91,10 @@ public class MainActivity extends Activity {
 				image.setVisibility(View.VISIBLE);
 				HideKeyboard();
 				TranslateAnimation tt = new TranslateAnimation(0, 0, -150, 0);
-				tt.setDuration(100);
+				tt.setDuration(200);
 				tt.setRepeatMode(1);
-				ll.setAnimation(tt);
+				ll.startAnimation(tt);
+				rl.setVisibility(View.GONE);
 			}
 		});
 		
@@ -107,15 +107,22 @@ public class MainActivity extends Activity {
 				if (contentText.hasFocus() == false)
 				{
 					HideKeyboard();
+				}else{
+					//
 				}
 			}
 		});
+		
 		contentText.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				rl.setVisibility(View.VISIBLE);
 				image.setVisibility(View.GONE);
+				TranslateAnimation tt_2 = new TranslateAnimation(0, 0, 120, 0);
+				tt_2.setDuration(200);
+				tt_2.setRepeatMode(1);
+				ll.startAnimation(tt_2);
 			}
 		});
 		
