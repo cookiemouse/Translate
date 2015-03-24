@@ -21,19 +21,20 @@ public class TranslateWord extends Thread{
 
 	private Handler handler = null;
 	private Bundle bundle = null;
-	private String str = null;
+	private String str = null, fromString = null, toString=null;
 
-	public TranslateWord(Handler handler, Bundle bundle, String str) {
+	public TranslateWord(Handler handler, Bundle bundle, String str, String fromString, String toString) {
 		this.handler = handler;
 		this.bundle = bundle;
 		this.str = str;
+		this.fromString = fromString;
+		this.toString = toString;
 	}
 
 	@Override
 	public void run() {
 		try {
-			
-			URL url_word = new URL("http://openapi.baidu.com/public/2.0/bmt/translate?client_id=GOr7jiTs5hiQvkHqDNg4KSTV&q="+str+"&from=en&to=zh");
+			URL url_word = new URL("http://openapi.baidu.com/public/2.0/bmt/translate?client_id=GOr7jiTs5hiQvkHqDNg4KSTV&q="+str+"&from=" + fromString + "&to=" + toString);
 			URLConnection connection = (URLConnection) url_word.openConnection();
 			InputStream is = connection.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);

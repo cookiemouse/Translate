@@ -10,27 +10,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:padding="10dp" 
+        >
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:background="@drawable/title" />
-        
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            android:layout_height="5dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp" >
+
+            <Button
+                android:id="@+id/btn_from"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/chioce_press"
+                android:gravity="center"
+                android:text="From" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/trans"/>
+
+            <Button
+                android:id="@+id/btn_to"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/chioce_press"
+                android:gravity="center"
+                android:text="To" />
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:maxHeight="100dp"
+            android:layout_height="90dp"
             android:background="@drawable/edit"
             android:gravity="start"
-            android:hint="@string/text_hint"/>
-        
+            android:hint="@string/text_hint"
+            android:maxHeight="90dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp" />
@@ -49,15 +80,21 @@
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/btn_press"
                 android:text="@string/cancel" />
+            
+            <Button
+                android:id="@+id/from_play"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/play_from"/>
 
             <Button
                 android:id="@+id/translate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="@string/translate"
                 android:background="@drawable/btn_press"
-                />
+                android:text="@string/translate" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -65,14 +102,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
+        android:orientation="vertical"
         android:padding="10dp"
-        android:orientation="vertical" >
+         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/content_background"
             android:orientation="vertical" >
+            
+             <TextView
+                android:id="@+id/tx_word_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="#ffffff" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,15 +145,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#ffffff" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tx_word_show"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:textColor="#ffffff" />
-
-                
+            
             <TextView
                 android:id="@+id/tx_show"
                 android:layout_width="wrap_content"
@@ -115,26 +153,28 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColor="#ffffff" />
-                </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp" />
+        
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:background="@drawable/hello_world_up"/>
+        android:background="@drawable/hello_world_up" />
 
     <TextView
         android:id="@+id/sentence_show"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_gravity="bottom|center_horizontal"
         android:gravity="center_vertical"
         android:textColor="#888888"
-        android:layout_gravity="bottom|center_horizontal"
-        android:textSize="7pt"/>
-    
+        android:textSize="7pt" />
+
 </FrameLayout>
