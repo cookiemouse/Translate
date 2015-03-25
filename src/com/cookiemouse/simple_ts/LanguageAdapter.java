@@ -1,7 +1,6 @@
 package com.cookiemouse.simple_ts;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import android.content.Context;
 import android.view.LayoutInflater;

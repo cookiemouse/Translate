@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,19 +22,21 @@ public class TranslateDictionary extends Thread{
 
 	private Handler handler = null;
 	private Bundle bundle = null;
-	private String str = null;
+	private String str = null, fromString = "auto", toString = "auto";
 
-	public TranslateDictionary(Handler handler, Bundle bundle, String str) {
+	public TranslateDictionary(Handler handler, Bundle bundle, String str, String fromString, String toString) {
 		this.handler = handler;
 		this.bundle = bundle;
 		this.str = str;
+		this.fromString = fromString;
+		this.toString = toString;
 	}
 
 	@Override
 	public void run() {
 		try {
-			
-			URL url_dict = new URL("http://openapi.baidu.com/public/2.0/translate/dict/simple?client_id=GOr7jiTs5hiQvkHqDNg4KSTV&q=" + str + "&from=auto&to=auto");
+			String str_utf = URLEncoder.encode(str, "UTF-8");
+			URL url_dict = new URL("http://openapi.baidu.com/public/2.0/translate/dict/simple?client_id=GOr7jiTs5hiQvkHqDNg4KSTV&q=" + str_utf + "&from=" + fromString + "&to=" + toString);
 			URLConnection connection = (URLConnection) url_dict.openConnection();
 			connection.setRequestProperty("encoding", "UTF-8");
 			InputStream is = connection.getInputStream();
@@ -67,10 +70,8 @@ public class TranslateDictionary extends Thread{
 					JSONObject dataObject_2 = jArray_1.getJSONObject(i);
 
 					//获取symbols里的ph_am,ph_en
-					bundle.putString("ph_am",
-							dataObject_2.getString("ph_am"));
-					bundle.putString("ph_en",
-							dataObject_2.getString("ph_en"));
+					bundle.putString("ph_am", dataObject_2.getString("ph_am"));
+					bundle.putString("ph_en", dataObject_2.getString("ph_en"));
 					StringBuilder sb = new StringBuilder();
 
 					JSONArray jArray_2 = dataObject_2.getJSONArray("parts");
@@ -79,8 +80,7 @@ public class TranslateDictionary extends Thread{
 						JSONObject dataObject_3 = jArray_2.getJSONObject(j);
 
 						//获取parts里的part
-						bundle.putString("part_" + j,
-								dataObject_3.getString("part"));
+						bundle.putString("part_" + j, dataObject_3.getString("part"));
 
 						sb.append(dataObject_3.getString("part"));
 
@@ -97,7 +97,10 @@ public class TranslateDictionary extends Thread{
 				}
 			}
 			else {
-				bundle.putString("content", "输入为空");
+				bundle.putString("word_name", "");
+				bundle.putString("ph_am", "");
+				bundle.putString("ph_en", "");
+				bundle.putString("content", "我并不能翻译您的意念 :)");
 			}
 			br.close();
 			isr.close();
@@ -113,7 +116,10 @@ public class TranslateDictionary extends Thread{
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
-			bundle.putString("content", "您所找的单词不存在!");
+			bundle.putString("word_name", "");
+			bundle.putString("ph_am", "");
+			bundle.putString("ph_en", "");
+			bundle.putString("content", "");
 		}
 	}
 }

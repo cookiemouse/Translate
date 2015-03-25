@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements OnInitListener{
 	private LinearLayout ll;
 	private TextToSpeech tts;
 	
-	private String from = "en", to = "zh";
+	private String from = "auto", to = "auto";
 	
 	Bundle bundle = new Bundle();
 
@@ -45,21 +45,22 @@ public class MainActivity extends Activity implements OnInitListener{
 			super.handleMessage(msg);
 			Bundle bundle_get = new Bundle();
 			bundle_get = msg.getData();
-			tv_word.setText(bundle_get.getString("word_name"));
-			if (bundle_get.getString("ph_en") != null)
+			
+			if (!(bundle_get.getString("ph_en") == null || bundle_get.getString("ph_en").equals("")))
 			{
+				tv_word.setText(bundle_get.getString("word_name"));
 				tv_ph_en.setText("\t[英] " + bundle_get.getString("ph_en"));
 				tv_ph_am.setText("\t[美]" + bundle_get.getString("ph_am"));
 			}
-			if (bundle_get.getString("dst") != null)
+			if (!(bundle_get.getString("dst") == null || bundle_get.getString("dst").equals("")))
 			{
 				tv_word_show.setText(bundle_get.getString("dst"));
 			}
-			if (bundle_get.getString("content") != null)
+			if (!(bundle_get.getString("content") == null || bundle_get.getString("content").equals("")))
 			{
 				tv_content.setText(bundle_get.getString("content"));
-				tv_sentence.setText(bundle_get.getString("wrods"));
 			}
+			tv_sentence.setText(bundle_get.getString("wrods"));
 		}
 	};
 
@@ -79,21 +80,37 @@ public class MainActivity extends Activity implements OnInitListener{
 		tv_sentence.setAnimation(ta);
 		ta.startNow();
 		
-		//one sentence
-		OneSentence  oSentence = new OneSentence(handler, bundle);
-		oSentence.start();
-		
 		translate.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				tv_word_show.setText("");
+				tv_word.setText("");
+				tv_content.setText("");
+				tv_ph_en.setText("");
+				tv_ph_am.setText("");
+				
 				String str = contentText.getText().toString().trim();
 				
-				TranslateDictionary td = new TranslateDictionary(handler, bundle, str);
-				td.start();
-				
-				TranslateWord tw = new TranslateWord(handler, bundle, str, from, to);
-				tw.start();
+				if (str.equals(""))
+				{
+					bundle.putString("dst", "");
+					bundle.putString("word_name", "");
+					bundle.putString("ph_am", "");
+					bundle.putString("ph_en", "");
+					bundle.putString("content", "我并不能翻译您的意念 :)");
+					
+					Message message = new Message();
+					message.setData(bundle);
+					handler.sendMessage(message);
+				}
+				else {
+					TranslateDictionary td = new TranslateDictionary(handler, bundle, str, from, to);
+					td.start();
+
+					TranslateWord tw = new TranslateWord(handler, bundle, str, from, to);
+					tw.start();
+				}
 				
 				HideKeyboard();
 			}
@@ -145,7 +162,9 @@ public class MainActivity extends Activity implements OnInitListener{
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, FromActivity.class);
+				intent.putExtra("LANGUAGE", from);
+				intent.putExtra("LANGUAGE_TEXT", button_from.getText().toString());
+				intent.setClass(MainActivity.this, ChoiceActivity.class);
 				startActivityForResult(intent, 0);
 			}
 		});
@@ -154,8 +173,9 @@ public class MainActivity extends Activity implements OnInitListener{
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, FromActivity.class);
-//				intent.setClass(MainActivity.this, ToActivity.class);
+				intent.putExtra("LANGUAGE", to);
+				intent.putExtra("LANGUAGE_TEXT", button_to.getText().toString());
+				intent.setClass(MainActivity.this, ChoiceActivity.class);
 				startActivityForResult(intent, 1);
 			}
 		});
@@ -178,14 +198,14 @@ public class MainActivity extends Activity implements OnInitListener{
 		{
 			//From
 			from = data.getStringExtra("LANGUAGE");
-			button_from.setText(data.getStringExtra("LANGUAGE"));
+			button_from.setText(data.getStringExtra("LANGUAGE_TEXT"));
 			break;
 		}
 		case 1:
 		{
 			//To
 			to = data.getStringExtra("LANGUAGE");
-			button_to.setText(data.getStringExtra("LANGUAGE"));
+			button_to.setText(data.getStringExtra("LANGUAGE_TEXT"));
 			break;
 		}
 		case 2:
@@ -245,11 +265,15 @@ public class MainActivity extends Activity implements OnInitListener{
 		rl = (RelativeLayout)findViewById(R.id.two_button_layout);
 		ll = (LinearLayout)findViewById(R.id.head);
 		contentText = (EditText)findViewById(R.id.content);
-		
+
 		//监测TTS
 		Intent intent = new Intent();
 		intent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
 		startActivityForResult(intent, 2);
+		
+		//one sentence
+		OneSentence  oSentence = new OneSentence(handler, bundle);
+		oSentence.start();
 	}
 	
 }

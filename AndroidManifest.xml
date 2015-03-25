@@ -25,12 +25,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FromActivity"
+            android:name=".ChoiceActivity"
             android:label="@string/title_activity_from" >
-        </activity>
-        <activity
-            android:name=".ToActivity"
-            android:label="@string/title_activity_to" >
         </activity>
     </application>
 

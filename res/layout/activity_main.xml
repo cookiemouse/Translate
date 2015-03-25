@@ -35,7 +35,7 @@
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/chioce_press"
                 android:gravity="center"
-                android:text="From" />
+                android:text="自动识别" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -50,7 +50,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@drawable/chioce_press"
                 android:gravity="center"
-                android:text="To" />
+                android:text="自动识别" />
         </RelativeLayout>
 
         <EditText
