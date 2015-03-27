@@ -56,6 +56,8 @@ public class TranslateWord extends Thread{
 			JSONTokener jtk = new JSONTokener(sBuilder.toString());
 			JSONObject jObject = (JSONObject) jtk.nextValue();
 			
+			bundle.putString("from", jObject.getString("from"));
+			bundle.putString("to", jObject.getString("to"));
 			JSONArray jArray = jObject.getJSONArray("trans_result");
 			Log.i("TAG", url_word.toString());
 			Log.i("TAG", jObject.toString());

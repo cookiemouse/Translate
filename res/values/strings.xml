@@ -8,8 +8,6 @@
     <string name="text_hint">请输入需要翻译的内容</string>
     <string name="ph_en">[英]</string>
     <string name="ph_am">[美]</string>
-    <string name="title_activity_from">FromActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_to">ToActivity</string>
+    <string name="title_activity_from">选择语言</string>
 
 </resources>

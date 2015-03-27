@@ -44,15 +44,16 @@ public final class R {
         public static final int japen=0x7f020013;
         public static final int kor=0x7f020014;
         public static final int play_from=0x7f020015;
-        public static final int point_green=0x7f020016;
-        public static final int point_red=0x7f020017;
-        public static final int point_yellow=0x7f020018;
-        public static final int portugal=0x7f020019;
-        public static final int russia=0x7f02001a;
-        public static final int span=0x7f02001b;
-        public static final int tailand=0x7f02001c;
-        public static final int title=0x7f02001d;
-        public static final int trans=0x7f02001e;
+        public static final int play_to=0x7f020016;
+        public static final int point_green=0x7f020017;
+        public static final int point_red=0x7f020018;
+        public static final int point_yellow=0x7f020019;
+        public static final int portugal=0x7f02001a;
+        public static final int russia=0x7f02001b;
+        public static final int span=0x7f02001c;
+        public static final int tailand=0x7f02001d;
+        public static final int title=0x7f02001e;
+        public static final int trans=0x7f02001f;
     }
     public static final class id {
         public static final int btn_from=0x7f070003;
@@ -60,19 +61,20 @@ public final class R {
         public static final int cancel=0x7f070007;
         public static final int content=0x7f070005;
         public static final int from_list=0x7f070000;
-        public static final int from_play=0x7f070008;
+        public static final int from_play=0x7f07000a;
+        public static final int from_to=0x7f070009;
         public static final int head=0x7f070001;
         public static final int image=0x7f070002;
-        public static final int language_image=0x7f070010;
-        public static final int language_name=0x7f070011;
-        public static final int sentence_show=0x7f07000f;
-        public static final int translate=0x7f070009;
-        public static final int tv_ph_am=0x7f07000d;
-        public static final int tv_ph_en=0x7f07000c;
-        public static final int tv_word=0x7f07000b;
+        public static final int language_image=0x7f070011;
+        public static final int language_name=0x7f070012;
+        public static final int sentence_show=0x7f070010;
+        public static final int translate=0x7f070008;
+        public static final int tv_ph_am=0x7f07000e;
+        public static final int tv_ph_en=0x7f07000d;
+        public static final int tv_word=0x7f07000c;
         public static final int two_button_layout=0x7f070006;
-        public static final int tx_show=0x7f07000e;
-        public static final int tx_word_show=0x7f07000a;
+        public static final int tx_show=0x7f07000f;
+        public static final int tx_word_show=0x7f07000b;
     }
     public static final class layout {
         public static final int activity_choice=0x7f030000;
@@ -83,12 +85,10 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int cancel=0x7f050003;
-        public static final int hello_world=0x7f050008;
         public static final int ph_am=0x7f050006;
         public static final int ph_en=0x7f050005;
         public static final int text_hint=0x7f050004;
         public static final int title_activity_from=0x7f050007;
-        public static final int title_activity_to=0x7f050009;
         public static final int translate=0x7f050002;
     }
     public static final class style {

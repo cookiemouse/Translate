@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <Button
                 android:id="@+id/cancel"
@@ -82,19 +82,31 @@
                 android:text="@string/cancel" />
             
             <Button
-                android:id="@+id/from_play"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/play_from"/>
-
-            <Button
                 android:id="@+id/translate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/btn_press"
                 android:text="@string/translate" />
+
+            <Button
+                android:id="@+id/from_to"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@+id/translate"
+                android:layout_alignBottom="@+id/translate"
+                android:layout_toLeftOf="@+id/translate"
+                android:background="@drawable/play_to"/>
+
+            <Button
+                android:id="@+id/from_play"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@+id/cancel"
+                android:layout_alignBottom="@+id/cancel"
+                android:layout_toRightOf="@+id/cancel"
+                android:background="@drawable/play_from" />
+
         </RelativeLayout>
     </LinearLayout>
 
